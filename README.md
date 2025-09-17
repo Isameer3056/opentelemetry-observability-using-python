@@ -25,7 +25,29 @@ By building this stack, I explored how observability connects the dots between *
 - **Tempo** → Distributed tracing  
 - **Grafana** → Visualization layer  
 - **Docker & Docker-Compose** → Container orchestration  
+---
 
+## 📋 Prerequisites
+
+Before starting, make sure you have:
+
+1.  **Docker & Docker Compose** installed (Install Guide)
+    
+2.  **Loki Docker logging driver** installed:
+    
+    `docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions` 
+    
+    > Needed for containers to forward logs directly to Loki.
+    
+3.  **Ports availability**:
+    
+    -   8000–8002 → FastAPI services
+        
+    -   3100 → Loki
+        
+    -   9090 → Prometheus
+        
+    -   3000 → Grafana
 ---
 
 ## ⚡ Getting Started
