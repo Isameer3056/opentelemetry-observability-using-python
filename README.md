@@ -40,6 +40,7 @@ cd opentelemetry-observability-using-python
 docker-compose up --build -d
 ```
 This launches all three apps along with Prometheus, Loki, Tempo, and Grafana.
+
 ### 3. Verify the apps
 ```
 curl http://localhost:8000
@@ -61,6 +62,7 @@ powershell
 while ($true) { curl http://localhost:8000 | Out-Null; Start-Sleep -Seconds 1 }
 ```
 Repeat for 8001 and 8002.
+
 ---
 
 ### 📊 Visualize Observability Data
@@ -71,6 +73,7 @@ Repeat for 8001 and 8002.
 - Loki → Logs via Grafana Explore
 
 - Tempo → Traces via Grafana Explore
+
 ---
 
 Example queries in Grafana:
@@ -86,6 +89,7 @@ rate(http_server_requests_total[1m])
 {container="app-a"}
 ```
 - **Traces (Tempo)**: Search by service name `app-a`, `app-b`, `app-c`
+
 ---
 
 ### 📌 Insights & Learnings
@@ -98,6 +102,7 @@ rate(http_server_requests_total[1m])
 - Grafana becomes a single pane of glass for all observability data.
 
 - Running everything in Docker-Compose makes it easy to test locally.
+
 ---
 
 This project provided me with a practical understanding of how SREs and DevOps engineers can monitor, troubleshoot, and improve distributed systems.
