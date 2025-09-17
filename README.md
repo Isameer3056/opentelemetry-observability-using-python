@@ -1,5 +1,4 @@
 # opentelemetry-observability-using-python
-# opentelemetry-observability-using-python
 
 A hands-on project to learn and implement **observability for Python microservices** using the **OpenTelemetry stack**.  
 This demo showcases how to collect and visualize **metrics, logs, and traces** across multiple FastAPI services, similar to what an SRE or DevOps engineer would build in a real-world environment.
@@ -26,18 +25,6 @@ By building this stack, I explored how observability connects the dots between *
 - **Tempo** → Distributed tracing  
 - **Grafana** → Visualization layer  
 - **Docker & Docker-Compose** → Container orchestration  
-
----
-
-## 📂 Project Structure
-opentelemetry-observability-using-python/
-│
-├── app-a/ # FastAPI service A
-├── app-b/ # FastAPI service B
-├── app-c/ # FastAPI service C
-├── docker-compose.yml # Orchestration of apps + observability stack
-├── requirements.txt # Python dependencies
-└── README.md # You are here :)
 
 ---
 
@@ -79,37 +66,37 @@ while ($true) { curl http://localhost:8000 | Out-Null; Start-Sleep -Seconds 1 }
 Repeat for 8001 and 8002.
 
 ### 📊 Visualize Observability Data
-Grafana → http://localhost:3000 (default login: admin/admin)
+- Grafana → http://localhost:3000 (default login: admin/admin)
 
-Prometheus → http://localhost:9090
+- Prometheus → http://localhost:9090
 
-Loki → Logs via Grafana Explore
+- Loki → Logs via Grafana Explore
 
-Tempo → Traces via Grafana Explore
+- Tempo → Traces via Grafana Explore
 
 Example queries in Grafana:
 
-Metrics (Prometheus):
+- Metrics (Prometheus):
 
-scss
-Copy code
+```
 rate(http_server_requests_total[1m])
-Logs (Loki):
+```
+- Logs (Loki):
 
-arduino
-Copy code
+```
 {container="app-a"}
-Traces (Tempo): Search by service name app-a, app-b, app-c
+```
+- Traces (Tempo): Search by service name `app-a`, `app-b`, `app-c`
 
-📌 Insights & Learnings
-Traces help follow a single request across multiple services.
+### 📌 Insights & Learnings
+- Traces help follow a single request across multiple services.
 
-Logs provide context and are correlated with traces.
+- Logs provide context and are correlated with traces.
 
-Metrics give quantitative signals about performance and failures.
+- Metrics give quantitative signals about performance and failures.
 
-Grafana becomes a single pane of glass for all observability data.
+- Grafana becomes a single pane of glass for all observability data.
 
-Running everything in Docker-Compose makes it easy to test locally.
+- Running everything in Docker-Compose makes it easy to test locally.
 
 This project provided me with a practical understanding of how SREs and DevOps engineers can monitor, troubleshoot, and improve distributed systems.
