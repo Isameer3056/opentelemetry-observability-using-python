@@ -61,6 +61,7 @@ powershell
 while ($true) { curl http://localhost:8000 | Out-Null; Start-Sleep -Seconds 1 }
 ```
 Repeat for 8001 and 8002.
+---
 
 ### 📊 Visualize Observability Data
 - Grafana → http://localhost:3000 (default login: admin/admin)
@@ -70,20 +71,22 @@ Repeat for 8001 and 8002.
 - Loki → Logs via Grafana Explore
 
 - Tempo → Traces via Grafana Explore
+---
 
 Example queries in Grafana:
 
-- Metrics (Prometheus):
+- **Metrics (Prometheus)**:
 
-```
+```scss
 rate(http_server_requests_total[1m])
 ```
-- Logs (Loki):
+- **Logs (Loki)**:
 
 ```
 {container="app-a"}
 ```
-- Traces (Tempo): Search by service name `app-a`, `app-b`, `app-c`
+- **Traces (Tempo)**: Search by service name `app-a`, `app-b`, `app-c`
+---
 
 ### 📌 Insights & Learnings
 - Traces help follow a single request across multiple services.
@@ -95,5 +98,6 @@ rate(http_server_requests_total[1m])
 - Grafana becomes a single pane of glass for all observability data.
 
 - Running everything in Docker-Compose makes it easy to test locally.
+---
 
 This project provided me with a practical understanding of how SREs and DevOps engineers can monitor, troubleshoot, and improve distributed systems.
