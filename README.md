@@ -54,7 +54,7 @@ Before starting, make sure you have:
 
 ### 1. Clone the repo
 ```
-git clone https://github.com/<your-username>/opentelemetry-observability-using-python.git
+git clone https://github.com/Isameer3056/opentelemetry-observability-using-python.git
 cd opentelemetry-observability-using-python
 ```
 ### 2. Build and run
@@ -62,6 +62,20 @@ cd opentelemetry-observability-using-python
 docker-compose up --build -d
 ```
 This launches all three apps along with Prometheus, Loki, Tempo, and Grafana.
+
+Services will be available at:
+
+-   Service A: [http://localhost:8000](http://localhost:8000)
+    
+-   Service B: [http://localhost:8001](http://localhost:8001)
+    
+-   Service C: [http://localhost:8002](http://localhost:8002)
+    
+-   Grafana: [http://localhost:3000](http://localhost:3000) (default: `admin` / `admin`)
+    
+-   Prometheus: [http://localhost:9090](http://localhost:9090)
+
+-   Loki: [http://localhost:3100](http://localhost:3100)
 
 ### 3. Verify the apps
 ```
