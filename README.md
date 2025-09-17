@@ -46,9 +46,6 @@ curl http://localhost:8000
 curl http://localhost:8001
 curl http://localhost:8002
 ```
-This launches all three apps along with Prometheus, Loki, Tempo, and Grafana.
----
-
 ## Generate Load
 Send requests so telemetry data starts flowing:
 
