@@ -1,2 +1,115 @@
 # opentelemetry-observability-using-python
-End-to-end observability demo using Python, OpenTelemetry, Prometheus, Loki, Tempo, and Grafana — a practical SRE project to monitor microservices with metrics, logs, and traces.
+# opentelemetry-observability-using-python
+
+A hands-on project to learn and implement **observability for Python microservices** using the **OpenTelemetry stack**.  
+This demo showcases how to collect and visualize **metrics, logs, and traces** across multiple FastAPI services, similar to what an SRE or DevOps engineer would build in a real-world environment.
+
+---
+
+## 🚀 Why This Project?
+Modern systems are **distributed** and often complex. Debugging and monitoring them without proper observability tools is nearly impossible.  
+This project helps answer questions like:
+- Is my service healthy?
+- How many requests is it handling?
+- Where are failures happening?
+- How do I trace a request across multiple services?
+
+By building this stack, I explored how observability connects the dots between **metrics, logs, and traces** to give complete visibility.
+
+---
+
+## 🛠️ Tech Stack
+- **Python 3 + FastAPI** → Three microservices (`app-a`, `app-b`, `app-c`)  
+- **OpenTelemetry SDK** → Automatic instrumentation for metrics, logs, and traces  
+- **Prometheus** → Metrics collection  
+- **Loki** → Centralized log aggregation  
+- **Tempo** → Distributed tracing  
+- **Grafana** → Visualization layer  
+- **Docker & Docker-Compose** → Container orchestration  
+
+---
+
+## 📂 Project Structure
+opentelemetry-observability-using-python/
+│
+├── app-a/ # FastAPI service A
+├── app-b/ # FastAPI service B
+├── app-c/ # FastAPI service C
+├── docker-compose.yml # Orchestration of apps + observability stack
+├── requirements.txt # Python dependencies
+└── README.md # You are here :)
+
+---
+
+## ⚡ Getting Started
+
+### 1. Clone the repo
+```
+git clone https://github.com/<your-username>/opentelemetry-observability-using-python.git
+cd opentelemetry-observability-using-python
+```
+### 2. Build and run
+```
+docker-compose up --build -d
+```
+This launches all three apps along with Prometheus, Loki, Tempo, and Grafana.
+### 3. Verify the apps
+```
+curl http://localhost:8000
+curl http://localhost:8001
+curl http://localhost:8002
+```
+This launches all three apps along with Prometheus, Loki, Tempo, and Grafana.
+---
+
+## Generate Load
+Send requests so telemetry data starts flowing:
+
+Linux / Mac
+
+```
+while true; do curl -s http://localhost:8000 > /dev/null; sleep 1; done
+```
+Windows (PowerShell)
+```
+powershell
+
+while ($true) { curl http://localhost:8000 | Out-Null; Start-Sleep -Seconds 1 }
+```
+Repeat for 8001 and 8002.
+
+### 📊 Visualize Observability Data
+Grafana → http://localhost:3000 (default login: admin/admin)
+
+Prometheus → http://localhost:9090
+
+Loki → Logs via Grafana Explore
+
+Tempo → Traces via Grafana Explore
+
+Example queries in Grafana:
+
+Metrics (Prometheus):
+
+scss
+Copy code
+rate(http_server_requests_total[1m])
+Logs (Loki):
+
+arduino
+Copy code
+{container="app-a"}
+Traces (Tempo): Search by service name app-a, app-b, app-c
+
+📌 Insights & Learnings
+Traces help follow a single request across multiple services.
+
+Logs provide context and are correlated with traces.
+
+Metrics give quantitative signals about performance and failures.
+
+Grafana becomes a single pane of glass for all observability data.
+
+Running everything in Docker-Compose makes it easy to test locally.
+
+This project provided me with a practical understanding of how SREs and DevOps engineers can monitor, troubleshoot, and improve distributed systems.
